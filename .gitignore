@@ -1,0 +1,9 @@
+#directories
+out
+lib
+
+#files
+log.txt
+users.ser
+prev.ser
+blackist.ser
