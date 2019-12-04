@@ -2,20 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e693e559-5701-437b-8ab2-74aba8a2778e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/latsa/chatserver/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/latsa/chatserver/ClientHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/latsa/chatserver/CommandHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/latsa/chatserver/CommandHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/latsa/chatserver/ServerApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/latsa/chatserver/ServerApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/latsa/chatserver/TcpChatServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/latsa/chatserver/TcpChatServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/latsa/chatserver/TcpChatServerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/latsa/chatserver/TcpChatServerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/latsa/chatserver/UserData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/latsa/chatserver/UserData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/latsa/chatserver/gui/ServerTerminal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/latsa/chatserver/gui/ServerTerminal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/latsa/chatserver/utils/CommandBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/latsa/chatserver/utils/CommandBuffer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/latsa/chatserver/utils/CommandBufferTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/latsa/chatserver/utils/CommandBufferTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/latsa/chatserver/utils/CommandFifo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/latsa/chatserver/utils/CommandFifo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/latsa/chatserver/utils/CommandFifoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/latsa/chatserver/utils/CommandFifoTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -134,7 +123,8 @@
       <workItem from="1575317737275" duration="3741000" />
       <workItem from="1575355404801" duration="6155000" />
       <workItem from="1575364996469" duration="625000" />
-      <workItem from="1575434350513" duration="619000" />
+      <workItem from="1575434350513" duration="1002000" />
+      <workItem from="1575472838107" duration="4949000" />
     </task>
     <servers />
   </component>

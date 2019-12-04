@@ -7,3 +7,4 @@ log.txt
 users.ser
 prev.ser
 blacklist.ser
+*.plantuml

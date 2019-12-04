@@ -64,6 +64,8 @@ public class CommandHandler implements Runnable {
                     showMsg(true);
                 else if (cmd[0].equals("hide_msg") && cmd.length == 1)
                     showMsg(false);
+                else if (cmd[0].equals("") && cmd.length == 1)
+                    terminal.appendTextToTerminal("");
                 else
                     terminal.appendTextToTerminal("Error: Not a valid command!");
 
