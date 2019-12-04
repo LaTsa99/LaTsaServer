@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import java.util.Set;
 import java.util.TreeMap;
 
+/**
+ * Runs the server and executes some commands.
+ */
 public class TcpChatServer implements Runnable {
     private int PORT;
     private ServerSocket welcomeSocket;
@@ -24,6 +27,12 @@ public class TcpChatServer implements Runnable {
     private static final String IPADDRESS_PATTERN =
             "^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])$";
 
+    /**
+     * Instantiates a new server on given port. Port can't be a well known port!
+     *
+     * @param port The port number that the server listens on
+     * @param terminal The terminal class that the server sends output messages
+     */
     @SuppressWarnings("unchecked")
     public TcpChatServer(int port, ServerTerminal terminal) {
         this.PORT = port;
@@ -41,6 +50,13 @@ public class TcpChatServer implements Runnable {
         clients = new ArrayList<>();
     }
 
+    /**
+     * This loads serialized data from location, and returns it in an ArrayList.
+     * If no data is stored, returns an empty ArrayList.
+     *
+     * @param location Where the serialized list is located
+     * @return a generic ArrayList of previously saved data
+     */
     private ArrayList<?> initList(String location) {
         ArrayList<?> temp = new ArrayList<>();
         try {
@@ -55,6 +71,12 @@ public class TcpChatServer implements Runnable {
         return temp;
     }
 
+    /**
+     * Saves the serialized list to the given location.
+     *
+     * @param location Where the file should be saved
+     * @param list The ArrayList to save
+     */
     private void saveList(String location, ArrayList<?> list) {
         try {
             FileOutputStream fos = new FileOutputStream(location);
@@ -67,6 +89,9 @@ public class TcpChatServer implements Runnable {
         }
     }
 
+    /**
+     * Creates the server socket on given port (from constructor)
+     */
     private void initServer() {
         try {
             welcomeSocket = new ServerSocket(PORT);
@@ -75,6 +100,10 @@ public class TcpChatServer implements Runnable {
         }
     }
 
+    /**
+     * Accepts incoming sockets, checks, if they are on blacklist.
+     * If not, then adds them to client handlers.
+     */
     @Override
     public void run() {
         Socket clientSocket;
@@ -110,6 +139,11 @@ public class TcpChatServer implements Runnable {
         }
     }
 
+    /**
+     * Refuses connection to selected client.
+     *
+     * @param client socket, that should not connect to server
+     */
     private void refused(Socket client) {
         try {
             DataOutputStream dos = new DataOutputStream(client.getOutputStream());
@@ -120,6 +154,9 @@ public class TcpChatServer implements Runnable {
         }
     }
 
+    /**
+     * Stops the server loop and saves data.
+     */
     public void stopServer() {
         stopServer = true;
         saveList("users.ser", users);
@@ -132,10 +169,22 @@ public class TcpChatServer implements Runnable {
         }
     }
 
+    /**
+     * Returns the port number of the server socket.
+     *
+     * @return port number of server
+     */
     public int getPORT() {
         return welcomeSocket.getLocalPort();
     }
 
+    /**
+     * Returns the data of a selected user.
+     * If data doesn't exist, returns null.
+     *
+     * @param username name of selected user
+     * @return UserData object of user
+     */
     public UserData getUser(String username) {
         for (UserData ud : users)
             if (ud.getUsername().equals(username))
@@ -144,8 +193,11 @@ public class TcpChatServer implements Runnable {
         return null;
     }
 
+    /**
+     * Lists users of server and their status (online/offline).
+     */
     public void showUsers() {
-        TreeMap<String, String> online = ClientHandler.showOnline();
+        TreeMap<String, String> online = ClientHandler.getOnline();
         terminal.appendTextToTerminal("\n\nusers\tonline");
         terminal.appendTextToTerminal("------------------------------------------------------------------------------");
         if (online != null) {
@@ -160,12 +212,21 @@ public class TcpChatServer implements Runnable {
 
     }
 
+
+    /**
+     * Deletes previous messages sent through the server.
+     */
     public void deleteHistory() {
         previousMessages.clear();
         saveList("prev.ser", previousMessages);
     }
 
 
+    /**
+     * Kicks given user from the server.
+     *
+     * @param user name of user to kick.
+     */
     public void kickUser(String user) {
         ClientHandler selected = null;
         for (ClientHandler ch : clients) {
@@ -182,6 +243,13 @@ public class TcpChatServer implements Runnable {
             terminal.appendTextToTerminal("Error: selected user is offline!");
     }
 
+    /**
+     * Bans the selected user from the server and sends her/him the reason
+     * why she/he got banned.
+     *
+     * @param user name of user to ban
+     * @param reason why you want to ban this user
+     */
     public void banUser(String user, String reason) {
         UserData target = null;
         for (UserData ud : users) {
@@ -218,6 +286,11 @@ public class TcpChatServer implements Runnable {
         }
     }
 
+    /**
+     * Removes ban from the selected user.
+     *
+     * @param user name of user to unban
+     */
     public void removeBan(String user) {
         UserData target = null;
         for (UserData ud : users) {
@@ -236,6 +309,11 @@ public class TcpChatServer implements Runnable {
         }
     }
 
+    /**
+     * Adds ip address to blacklist.
+     *
+     * @param ip Ip address to ban
+     */
     public void banIp(String ip) {
         if (ip.matches(IPADDRESS_PATTERN)) {
             if (blacklist.contains(ip))
@@ -248,6 +326,11 @@ public class TcpChatServer implements Runnable {
             terminal.appendTextToTerminal("Error: This is not an IP address!");
     }
 
+    /**
+     * Removes ip address from blacklist.
+     *
+     * @param ip Ip address to unban
+     */
     public void unbanIp(String ip) {
         if (ip.matches(IPADDRESS_PATTERN)) {
             if (blacklist.contains(ip)) {
@@ -260,6 +343,11 @@ public class TcpChatServer implements Runnable {
             terminal.appendTextToTerminal("Error: This is not an IP address!");
     }
 
+    /**
+     * Deletes data of selected user.
+     *
+     * @param user name of user to delete
+     */
     public void deleteUser(String user) {
         UserData toDelete = null;
         for(UserData ud : users)
@@ -272,8 +360,8 @@ public class TcpChatServer implements Runnable {
             terminal.appendTextToTerminal("Error: User doesn't exist!");
         else {
             users.remove(toDelete);
-            if(ClientHandler.showOnline() != null){
-                ClientHandler.showOnline().remove(user);
+            if(ClientHandler.getOnline() != null){
+                ClientHandler.getOnline().remove(user);
             }
             terminal.appendTextToTerminal(String.format("%s removed from users!", user));
         }
@@ -282,6 +370,14 @@ public class TcpChatServer implements Runnable {
 
     //FOR TESTING
 
+    /**
+     * FOR TESTING ONLY
+     * Adds new user to list of users of this server.
+     *
+     * @param name name of new user
+     * @param pass password (preferably hash) of new user
+     *
+     */
     public void addUser(String name, String pass) {
         boolean exists = false;
         for (UserData u : users) {
@@ -294,10 +390,22 @@ public class TcpChatServer implements Runnable {
 
     }
 
+    /**
+     * FOR TESTING ONLY
+     * Returns messages, that went through the server.
+     *
+     * @return list of previous messages
+     */
     public ArrayList<String> getPreviousMessages() {
         return previousMessages;
     }
 
+    /**
+     * FOR TESTING ONLY
+     * Returns ip addresses that are banned from the server.
+     *
+     * @return list of banned ip addresses
+     */
     public ArrayList<String> getBlacklist() {
         return blacklist;
     }

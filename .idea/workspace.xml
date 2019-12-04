@@ -1,21 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e693e559-5701-437b-8ab2-74aba8a2778e" name="Default Changelist" comment="" />
+    <list default="true" id="e693e559-5701-437b-8ab2-74aba8a2778e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/latsa/chatserver/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/latsa/chatserver/ClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/latsa/chatserver/CommandHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/latsa/chatserver/CommandHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/latsa/chatserver/ServerApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/latsa/chatserver/ServerApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/latsa/chatserver/TcpChatServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/latsa/chatserver/TcpChatServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/latsa/chatserver/TcpChatServerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/latsa/chatserver/TcpChatServerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/latsa/chatserver/UserData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/latsa/chatserver/UserData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/latsa/chatserver/gui/ServerTerminal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/latsa/chatserver/gui/ServerTerminal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/latsa/chatserver/utils/CommandBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/latsa/chatserver/utils/CommandBuffer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/latsa/chatserver/utils/CommandBufferTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/latsa/chatserver/utils/CommandBufferTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/latsa/chatserver/utils/CommandFifo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/latsa/chatserver/utils/CommandFifo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/latsa/chatserver/utils/CommandFifoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/latsa/chatserver/utils/CommandFifoTest.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1URS5mWZ7pkxZCMRG1lRoqSJpoc" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -29,7 +53,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.ServerApp">
     <configuration name="ServerApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.latsa.chatserver.ServerApp" />
       <module name="LaTsaServer" />
@@ -43,9 +67,57 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="CommandBufferTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="LaTsaServer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.latsa.chatserver.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.latsa.chatserver.utils" />
+      <option name="MAIN_CLASS_NAME" value="com.latsa.chatserver.utils.CommandBufferTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CommandFifoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="LaTsaServer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.latsa.chatserver.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.latsa.chatserver.utils" />
+      <option name="MAIN_CLASS_NAME" value="com.latsa.chatserver.utils.CommandFifoTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TcpChatServerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="LaTsaServer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.latsa.chatserver.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.latsa.chatserver" />
+      <option name="MAIN_CLASS_NAME" value="com.latsa.chatserver.TcpChatServerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.ServerApp" />
+        <item itemvalue="JUnit.CommandFifoTest" />
+        <item itemvalue="JUnit.CommandBufferTest" />
+        <item itemvalue="JUnit.TcpChatServerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -59,11 +131,27 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575317733818</updated>
-      <workItem from="1575317737275" duration="621000" />
+      <workItem from="1575317737275" duration="3741000" />
+      <workItem from="1575355404801" duration="6155000" />
+      <workItem from="1575364996469" duration="625000" />
+      <workItem from="1575434350513" duration="619000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

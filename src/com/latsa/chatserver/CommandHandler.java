@@ -4,18 +4,31 @@ import com.latsa.chatserver.gui.ServerTerminal;
 import com.latsa.chatserver.utils.CommandFifo;
 
 
+/**
+ * Handles server-side commands.
+ */
 public class CommandHandler implements Runnable {
     private CommandFifo fifo;
     private ServerTerminal terminal;
     private TcpChatServer server;
     private boolean serverRunning;
 
+    /**
+     * Constructs new command handler.
+     *
+     * @param fifo Fifo object, from which commands can be read.
+     * @param terminal Terminal, also output to communicate with admin.
+     */
     public CommandHandler(CommandFifo fifo, ServerTerminal terminal) {
         this.fifo = fifo;
         this.terminal = terminal;
         serverRunning = false;
     }
 
+    /**
+     * Reads commands from fifo, and if they are valid,
+     * it will execute them.
+     */
     @Override
     public void run() {
         while (true) {
@@ -60,6 +73,12 @@ public class CommandHandler implements Runnable {
         }
     }
 
+    /**
+     * Creates a server on given port. In one application only one server
+     * can run at the same time.
+     *
+     * @param port port number, to start server on
+     */
     private void startServer(String port) {
         if (!serverRunning) {
             if(Integer.parseInt(port) > 1023) {
@@ -82,6 +101,9 @@ public class CommandHandler implements Runnable {
 
     }
 
+    /**
+     * Stops the server.
+     */
     private void stopServer() {
         if (server != null) {
             server.stopServer();
@@ -91,6 +113,11 @@ public class CommandHandler implements Runnable {
             noServer();
     }
 
+    /**
+     * Gives a user admin rights on the server.
+     *
+     * @param s name of the user
+     */
     private void addAdmin(String s) {
         if(server != null) {
             UserData selected = server.getUser(s);
@@ -108,6 +135,11 @@ public class CommandHandler implements Runnable {
             noServer();
     }
 
+    /**
+     * Removes admin rights from the user.
+     *
+     * @param s name of the user
+     */
     private void removeAdmin(String s) {
         if(server != null) {
             UserData selected = server.getUser(s);
@@ -126,6 +158,9 @@ public class CommandHandler implements Runnable {
             noServer();
     }
 
+    /**
+     * Shows users and their online status on the terminal.
+     */
     private void showUsers() {
         if (server != null) {
             server.showUsers();
@@ -134,6 +169,9 @@ public class CommandHandler implements Runnable {
         }
     }
 
+    /**
+     * Deletes previous messages.
+     */
     private void deleteHistory() {
         if(server != null) {
             if (areYouSure()) {
@@ -144,6 +182,11 @@ public class CommandHandler implements Runnable {
             noServer();
     }
 
+    /**
+     * Kicks selected user.
+     *
+     * @param user name of the user
+     */
     private void kickUser(String user) {
         if(server != null) {
             if (areYouSure()) {
@@ -155,6 +198,11 @@ public class CommandHandler implements Runnable {
             noServer();
     }
 
+    /**
+     * Bans selected user for given reason.
+     *
+     * @param cmd name of the user and reason to ban
+     */
     private void banUser(String[] cmd) {
         if(server != null) {
             if (areYouSure()) {
@@ -176,6 +224,11 @@ public class CommandHandler implements Runnable {
 
     }
 
+    /**
+     * Unbans selected user.
+     *
+     * @param user name of the user
+     */
     private void removeBan(String user) {
         if(server != null) {
             if (areYouSure()) {
@@ -188,6 +241,11 @@ public class CommandHandler implements Runnable {
             noServer();
     }
 
+    /**
+     * Deletes users data from the server.
+     *
+     * @param user name of the user
+     */
     private void deleteUser(String user)
     {
         if(server != null) {
@@ -199,6 +257,11 @@ public class CommandHandler implements Runnable {
             noServer();
     }
 
+    /**
+     * Adds ip address to the blacklist.
+     *
+     * @param ip ip address to ban
+     */
     private void banIp(String ip)
     {
         if(server != null)
@@ -208,6 +271,11 @@ public class CommandHandler implements Runnable {
             noServer();
     }
 
+    /**
+     * Removes ip address from the blacklist.
+     *
+     * @param ip ip address to "unban"
+     */
     private  void unbanIp(String ip)
     {
         if(server != null)
@@ -217,6 +285,11 @@ public class CommandHandler implements Runnable {
             noServer();
     }
 
+    /**
+     * Asks the server admin, if she/he really wants to execute command.
+     *
+     * @return yes or no
+     */
     private boolean areYouSure() {
         terminal.appendTextToTerminal("Are you sure? (y/n)");
         try {
@@ -229,11 +302,20 @@ public class CommandHandler implements Runnable {
     }
 
 
+    /**
+     * Sends error message if server is not running but admin
+     * wants to execute commands anyway.
+     */
     private void noServer()
     {
         terminal.appendTextToTerminal("Error: No server running!");
     }
 
+    /**
+     * Makes messages appear on terminal.
+     *
+     * @param show to show or not to show messages
+     */
     private void showMsg(boolean show)
     {
         ClientHandler.showMsg(show);

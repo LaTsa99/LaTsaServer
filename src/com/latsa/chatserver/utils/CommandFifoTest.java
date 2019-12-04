@@ -5,15 +5,26 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Tests CommandFifo.
+ */
 class CommandFifoTest {
 
     CommandFifo cf;
 
+    /**
+     * Instantiates a new CommandFifo before testing.
+     */
     @BeforeEach
     void setUp() {
         cf = new CommandFifo();
     }
 
+    /**
+     * Testing CommandFifo. Uses 2 of its methods.
+     *
+     * @throws InterruptedException
+     */
     @Test
     void testCommandFifo() throws InterruptedException {
         final String testString = "Test";

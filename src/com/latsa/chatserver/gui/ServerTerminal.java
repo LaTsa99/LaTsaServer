@@ -17,6 +17,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * A simple terminal like interface. Takes input and acts as a default output.
+ */
 public class ServerTerminal extends JFrame {
     private CommandFifo fifo;
     private JPanel mainPanel;
@@ -51,6 +54,11 @@ public class ServerTerminal extends JFrame {
 
     private ArrayList<String> logs;
 
+    /**
+     * Constructs a new terminal.
+     *
+     * @param fifo command fifo where incoming commands can be placed
+     */
     public ServerTerminal(CommandFifo fifo) {
         super("LaTsa chat server");
         this.fifo = fifo;
@@ -75,6 +83,9 @@ public class ServerTerminal extends JFrame {
 
     }
 
+    /**
+     * Initiates a swing window.
+     */
     private void initWindow() {
         mainPanel = new JPanel(new BorderLayout());
         mainPanel.setBackground(Color.BLACK);
@@ -116,28 +127,49 @@ public class ServerTerminal extends JFrame {
         this.pack();
     }
 
+    /**
+     * Shows text on the terminal.
+     *
+     * @param s text to display
+     */
     public synchronized void appendTextToTerminal(String s) {
         terminalArea.append(s + "\n");
         terminalArea.setCaretPosition(terminalArea.getDocument().getLength());
         logs.add(String.format("%s :\t %s\n", format.format(new Date()), s));
     }
 
+    /**
+     * Places command in the fifo.
+     *
+     * @param cmd command to place in fifo
+     */
     private void sendCommand(String cmd) {
         buffer.put(cmd);
         appendTextToTerminal("YOU >> " + cmd);
         fifo.put(cmd);
     }
 
+    /**
+     * @return previously given command
+     */
     private String previousCommand() {
         String prev = buffer.getPrev();
         return prev;
     }
 
+    /**
+     * @return command after previous command
+     */
     private String nextCommand() {
         String next = buffer.getNext();
         return next;
     }
 
+    /**
+     * Listens for up-arrow and down-arrow keys. If up-arrow pressed,
+     * then it returns the command before the command in input, by
+     * down-arrow it's the command after the one in the input.
+     */
     private class PrevAction extends AbstractAction {
         int to;
 
@@ -146,6 +178,11 @@ public class ServerTerminal extends JFrame {
         }
 
 
+        /**
+         * Executes commands if up-arrow or down-arrow pressed.
+         *
+         * @param actionEvent a key has been pressed
+         */
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
             if (to == 1) {
@@ -160,6 +197,9 @@ public class ServerTerminal extends JFrame {
         }
     }
 
+    /**
+     * Saves terminal output in a txt file.
+     */
     private void saveLogs() {
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter("log.txt", true));

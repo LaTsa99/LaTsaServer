@@ -6,15 +6,24 @@ import org.junit.jupiter.api.Test;
 import static org.junit.Assert.assertEquals;
 //import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * Tests command buffer class.
+ */
 class CommandBufferTest {
 
     CommandBuffer cb;
 
+    /**
+     * Creates an instance of CommandBuffer before testing.
+     */
     @BeforeEach
     void setUp() {
         cb = new CommandBuffer();
     }
 
+    /**
+     * Actually testing CommandBuffer. Uses 3 of its methods.
+     */
     @Test
     void testBuffer() {
         final String test1 = "Test1";

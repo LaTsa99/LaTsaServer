@@ -8,10 +8,16 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests TcpChatServer.
+ */
 class TcpChatServerTest {
 
     static TcpChatServer tcs;
 
+    /**
+     * Instantiates a TcpChatServer and starts its thread before testing.
+     */
     @BeforeEach
     void init() {
         tcs = new TcpChatServer(44444, new ServerTerminal(new CommandFifo()));
@@ -20,6 +26,9 @@ class TcpChatServerTest {
         tcs.addUser("Test", "Test");
     }
 
+    /**
+     * Testing TcpChatServer. In fact, it uses 8 of its methods.
+     */
     @Test
     void getPORT() {
         int port = tcs.getPORT();
